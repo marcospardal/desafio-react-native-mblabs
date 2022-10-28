@@ -17,7 +17,7 @@ export default {
     background: '#000',
     contrastText: '#FFF',
     boxShadow: 'rgba(255, 255, 255, 0.2)',
-    searchBarBackground: '#rgba(224, 224, 215, 0.2)',
+    searchBarBackground: 'rgba(224, 224, 215, 0.2)',
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,

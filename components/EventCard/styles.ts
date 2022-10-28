@@ -7,7 +7,8 @@ export const Card = styled.TouchableOpacity`
   border-radius: 4px;
   background-color: ${({ theme }: Themed) => Colors[theme].searchBarBackground};
   height: 130px;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   padding: 15px 8px;
   flex-direction: row;
 `

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { RootTabScreenProps } from '../../types';
-import { TopEventCarousel } from '../../components';
+import { TopEventCarousel, EventList } from '../../components';
 
 import * as S from './styles'
 
@@ -10,6 +10,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
   return (
     <S.Container>
       <TopEventCarousel theme={theme ?? 'light'} events={[]}/>
+      <EventList theme={theme ?? 'light'}/>
     </S.Container>
   )
 }

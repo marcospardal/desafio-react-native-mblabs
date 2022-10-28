@@ -3,7 +3,7 @@ import Colors from "../../constants/Colors";
 import { Themed } from "../../types/themed";
 
 export const CarouselContainer = styled.View`
-  height: 300px;
+  height: 250px;
   padding: 10px 10px;
   flex-direction: column;
 `
