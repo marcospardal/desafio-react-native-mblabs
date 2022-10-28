@@ -1,6 +1,5 @@
 import React from 'react';
 import { EventCardProps } from './types';
-import { FontAwesome5 } from '@expo/vector-icons';
 
 import * as S from './styles';
 
@@ -17,7 +16,8 @@ const EventCard = ({ theme, event }: EventCardProps) => {
           <S.CardTitle theme={theme}>Event Name</S.CardTitle>
           <S.Icon theme={theme} name='graduation-cap'/>
         </S.Row>
-        <S.EventInfo theme={theme}>Event Organizer</S.EventInfo>
+        <S.EventOrganizer theme={theme}>Event Organizer</S.EventOrganizer>
+        <S.EventInfo theme={theme}>20/10/2022 18:40</S.EventInfo>
         <S.EventTicketPrice theme={theme}>$ 30</S.EventTicketPrice>
         <S.EventInfo theme={theme}>Street name - number, neighborhod, city</S.EventInfo>
       </S.CardInfo>

@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 export const Card = styled.TouchableOpacity`
   border-radius: 4px;
   background-color: ${({ theme }: Themed) => Colors[theme].searchBarBackground};
-  height: 120px;
+  height: 130px;
   margin-right: 20px;
   padding: 15px 8px;
   flex-direction: row;
@@ -36,7 +36,7 @@ export const Icon = styled(FontAwesome5).attrs({
 
 export const EventTicketPrice = styled(CardTitle)`
   font-size: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 export const EventInfo = styled.Text.attrs({
@@ -44,8 +44,14 @@ export const EventInfo = styled.Text.attrs({
   numberOfLines: 1
 })`
   font-size: 12px;
+  line-height: 15px;
   flex: 1;
   color: ${({ theme }: Themed) => Colors[theme].contrastText};
+`
+
+export const EventOrganizer = styled(EventInfo)`
+  font-size: 10px;
+  color: ${({ theme }: Themed) => Colors[theme].text};
 `
 
 export const CardInfo = styled.View`
