@@ -1,14 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, useColorScheme } from 'react-native';
 import { RootTabScreenProps } from '../../types';
+import { TopEventCarousel } from '../../components';
 
 import * as S from './styles'
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
-  
+  const theme = useColorScheme();
   return (
     <S.Container>
-      <Text style={{ color: 'red' }}>aaaa</Text>
+      <TopEventCarousel theme={theme ?? 'light'} events={[]}/>
     </S.Container>
   )
 }
