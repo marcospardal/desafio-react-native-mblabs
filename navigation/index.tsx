@@ -3,15 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable, View } from 'react-native';
+import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import { Home } from '../screens';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import { Home, MyTickets } from '../screens';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { SearchBar } from '../components';
@@ -61,7 +59,7 @@ function BottomTabNavigator() {
             backgroundColor: Colors[colorScheme].background,
             height: 90
           },
-          headerTitle: (props) => <SearchBar theme={colorScheme ?? 'light'}/>,
+          headerTitle: (props) => <SearchBar />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -79,8 +77,8 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Mytickets"
+        component={MyTickets}
         options={{
           title: 'My Tickets',
           tabBarIcon: ({ color }) => <FontAwesome5 size={30} style={{ marginBottom: -3 }} name="wallet" color={color}  />,

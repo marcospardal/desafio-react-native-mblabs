@@ -1,11 +1,9 @@
 import styled from "styled-components/native";
-import Colors from "../../constants/Colors";
-import { Themed } from "../../types/themed";
 import { FontAwesome5 } from '@expo/vector-icons';
 
 export const Card = styled.TouchableOpacity`
   border-radius: 4px;
-  background-color: ${({ theme }: Themed) => Colors[theme].searchBarBackground};
+  background-color: ${({ theme }: any) => theme.searchBarBackground};
   height: 130px;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -26,13 +24,13 @@ export const CardTitle = styled.Text.attrs({
   flex: 2
   font-size: 18px;
   font-weight: bold;
-  color: ${({ theme }: Themed) => Colors[theme].text};
+  color: ${({ theme }: any) => theme.text};
 `
 
 export const Icon = styled(FontAwesome5).attrs({
   size: 15
 })`
-  color: ${({ theme }: Themed) => Colors[theme].text};
+  color: ${(props) => props.theme.text};
 `
 
 export const EventTicketPrice = styled(CardTitle)`
@@ -47,12 +45,12 @@ export const EventInfo = styled.Text.attrs({
   font-size: 12px;
   line-height: 15px;
   flex: 1;
-  color: ${({ theme }: Themed) => Colors[theme].contrastText};
+  color: ${({ theme }: any) => theme['contrastText']};
 `
 
 export const EventOrganizer = styled(EventInfo)`
   font-size: 10px;
-  color: ${({ theme }: Themed) => Colors[theme].text};
+  color: ${({ theme }: any) => theme.text};
 `
 
 export const CardInfo = styled.View`

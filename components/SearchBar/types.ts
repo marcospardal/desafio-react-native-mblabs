@@ -1,5 +1,3 @@
-import { Themed } from "../../types/themed";
-
-export interface SearchBarProps extends Themed {
+export interface SearchBarProps {
   onSearch?: (value: string) => void
 }

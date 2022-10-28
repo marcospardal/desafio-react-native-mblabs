@@ -7,12 +7,11 @@ import * as S from './styles';
  * 
  * @author Marcos Pardal
  * @param onSearch function to handle search
- * @param theme device theme 
  */
-const SearchBar = ({ onSearch, theme }: SearchBarProps) => {
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   return (
     <>
-      <S.Input theme={theme} placeholder="Search"/>
+      <S.Input placeholder="Search"/>
       <S.SearchIcon
         name="search"
         size={15}

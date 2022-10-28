@@ -1,6 +1,5 @@
-import Event from "../../types/event"
-import { Themed } from "../../types/themed"
+import Event from "../../types/event";
 
-export interface TopEventCarrouselProps extends Themed {
+export interface TopEventCarrouselProps {
   events: Event[]
 }
