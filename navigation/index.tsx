@@ -12,7 +12,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { Home, MyTickets, EventInfo } from '../screens';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
-import { SearchBar } from '../components';
+import { SearchBar, CartIcon } from '../components';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -72,12 +72,7 @@ function BottomTabNavigator() {
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
-              <FontAwesome
-                name="shopping-cart"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
+              <CartIcon />
             </Pressable>
           ),
         })}
