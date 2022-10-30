@@ -1,5 +1,6 @@
 import React from 'react';
 import { EventCardProps } from './types';
+import { useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
 
@@ -8,8 +9,10 @@ import * as S from './styles';
  * @author Marcos Pardal
  */
 const EventCard = ({ event }: EventCardProps) => {
+  const navigation = useNavigation();
+
   return (
-    <S.Card activeOpacity={0.8}>
+    <S.Card onLongPress={() => navigation.navigate('ModalEventInfo')}>
       <S.EventImage source={{ uri: "https://images.unsplash.com/photo-1526045612212-70caf35c14df"}}/>
       <S.CardInfo>
         <S.Row>

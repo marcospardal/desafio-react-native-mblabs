@@ -1,7 +1,10 @@
 import styled from "styled-components/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 
-export const Card = styled.TouchableOpacity`
+export const Card = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8,
+  delayLongPress: 70,
+})`
   border-radius: 4px;
   background-color: ${({ theme }: any) => theme.searchBarBackground};
   height: 130px;

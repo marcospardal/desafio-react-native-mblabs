@@ -5,8 +5,12 @@ import EventCard from '../EventCard';
 
 import * as S from './styles';
 
-type FilterTypes = 'All' | 'College' | 'Company'
+type FilterTypes = 'All' | 'College' | 'Company';
 
+/**
+ * 
+ * @author Marcos Pardal
+ */
 const EventList = ({  }: EventListProps) => {
   const [filterValue, setFilterValue] = useState<FilterTypes>('All');
 
