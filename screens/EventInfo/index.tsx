@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootStackScreenProps } from '../../types';
 import { useNavigation } from '@react-navigation/native';
@@ -58,4 +58,4 @@ const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
   )
 }
 
-export default EventInfo;
+export default memo(EventInfo);

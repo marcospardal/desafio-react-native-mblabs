@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { EventCardProps } from './types';
 import { useNavigation } from '@react-navigation/native';
 
@@ -32,4 +32,4 @@ const EventCard = ({ event, onlyInfo = false }: EventCardProps) => {
   )
 }
 
-export default EventCard;
+export default memo(EventCard);

@@ -7,8 +7,6 @@ import * as S from './styles';
 const CartIcon = () => {
   const cart = useSelector((state: AppState) => state.cart);
 
-  console.log(cart)
-
   return (
     <>
       <S.CartIcon />
