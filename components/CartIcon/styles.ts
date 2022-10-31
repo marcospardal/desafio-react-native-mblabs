@@ -12,7 +12,7 @@ export const CartIcon = styled(FontAwesome).attrs({
 export const ContainerNumber = styled.View`
   height: 15px;
   width: 15px;
-  background-color: ${({ theme }: any) => theme.tint};
+  background-color: ${({ theme }: any) => theme.notification};
   border-radius: 8px;
   justify-content: center;
   align-items: center;

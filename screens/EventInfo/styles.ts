@@ -14,7 +14,6 @@ export const Title = styled.Text`
 
 export const EventImage = styled.Image`
   height: 220px;
-  border-radius: 4px 0 4px 0;
   width: 100%;
 `
 

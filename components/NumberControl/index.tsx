@@ -10,11 +10,12 @@ import * as S from './styles';
  * @param handleIncrease plus button function
  * @param handleDecrease minus button function
  */
-const NumberControl = ({ value, handleIncrease, handleDecrease }: NumberControlProps) => {
+const NumberControl = ({ value, handleIncrease, handleDecrease, cart = false }: NumberControlProps) => {
+
   return (
     <S.Container>
       <S.Button onPress={handleDecrease} disabled={value === 0}>
-        <S.Icon name='minus' size={18} disabled={value === 0}/>
+        <S.Icon name={cart && value === 0 ? 'remove' : 'minus'} size={18} disabled={value === 0}/>
       </S.Button>
       <S.Number>{value}</S.Number>
       <S.Button onPress={handleIncrease}>
