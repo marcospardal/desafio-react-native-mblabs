@@ -1,5 +1,6 @@
 import Event from "../../types/event";
 
 export interface EventCardProps {
-  event: any
+  event: any;
+  onlyInfo?: boolean;
 }
