@@ -1,3 +1,4 @@
+export { default as Ticket } from './Ticket';
 export { default as IconInfo } from './IconInfo';
 export { default as CartIcon } from './CartIcon';
 export { default as SearchBar } from './SearchBar';
