@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
-import { IconInfo, NumberControl } from '../../components';
+import { useDispatch } from 'react-redux';
 import { RootStackScreenProps } from '../../types';
+import { useNavigation } from '@react-navigation/native';
+import { IconInfo, NumberControl } from '../../components';
 
 import * as S from './styles';
+import { AddItem } from '../../store/Cart/actions';
 
 const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
+  const dispatch = useDispatch();
   const { event } = route.params;
+  const navigation = useNavigation();
   const [ticketsNumber, setTicketsNumber] = useState<number>(0);
 
   const handleTicketsIncrease = () => setTicketsNumber(prev => prev + 1);
 
   const handleTicketsDecrease = () => setTicketsNumber(prev => prev - 1);
 
+  const handleAddToCart = () => {
+    const ticket = { event, number: ticketsNumber };
+    dispatch<any>(AddItem(ticket));
+    navigation.navigate('Root');
+  }
+
   return (
     <S.Container>
-      <S.EventImage source={{ uri: event.img}}/>
+      <S.EventImage source={{ uri: event.img }}/>
       <S.Content>
         <S.Title>{event.name}</S.Title>
         <S.Description>{event.description}</S.Description>
@@ -37,7 +48,7 @@ const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
       </S.Content>
       <S.BuyingOptions>
         <NumberControl value={ticketsNumber} handleDecrease={handleTicketsDecrease} handleIncrease={handleTicketsIncrease} />
-        <S.AddCart>
+        <S.AddCart onPress={handleAddToCart}>
           <S.CartLabel>Add to cart</S.CartLabel>
         </S.AddCart>
       </S.BuyingOptions>

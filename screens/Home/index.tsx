@@ -10,6 +10,8 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   const filter = useSelector((state: AppState) => state.list.filter);
   const search = useSelector((state: AppState) => state.list.search);
+  const topEvents = useSelector((state: AppState) => state.list.data).slice(0, 2);
+
   
   useEffect(() => {
     dispatch<any>(LoadEvents())
@@ -17,7 +19,7 @@ const HomeScreen = () => {
 
   return (
     <S.Container full={search === ''}>
-      {search === '' && <TopEventCarousel />}
+      {search === '' && <TopEventCarousel events={topEvents} />}
       <EventList type='All'/>
     </S.Container>
   )

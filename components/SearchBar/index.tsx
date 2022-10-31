@@ -19,7 +19,12 @@ const SearchBar = () => {
   
   return (
     <>
-      <S.Input placeholder="Search" value={searchValue} onChangeText={setSearchValue}/>
+      <S.Input 
+        placeholder="Search" 
+        value={searchValue} 
+        onChangeText={setSearchValue}
+        onSubmitEditing={handleSearch}
+      />
       <S.SearchIcon
         name="search"
         size={15}

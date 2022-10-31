@@ -5,18 +5,15 @@ import Event from '../../types/event';
 import Carousel from 'react-native-reanimated-carousel';
 
 import * as S from './styles';
-import { AppState } from '../../store';
-import { useSelector } from 'react-redux';
+import { TopEventCarouselProps } from './types';
 
 /**
  * 
  * @author Marcos Pardal
  * @param events List of top events
  */
-const TopEventCarousel = () => {
+const TopEventCarousel = ({ events }: TopEventCarouselProps) => {
   const width = Dimensions.get('window').width - 30;
-  const list = useSelector((state: AppState) => state.list.data);
-  const topEvents = list.slice(0, 3);
 
   return (
     <S.CarouselContainer>
@@ -25,7 +22,7 @@ const TopEventCarousel = () => {
         autoPlay={false}
         height={150}
         width={width}
-        data={topEvents}
+        data={events}
         renderItem={(event: any) => <EventCard event={event}/>}
       />
     </S.CarouselContainer>

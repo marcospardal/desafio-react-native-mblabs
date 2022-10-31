@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,8 +12,15 @@ import { SearchBar, CartIcon } from '../components';
 import LinkingConfiguration from './LinkingConfiguration';
 import { Home, MyTickets, EventInfo, Cart } from '../screens';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { LoadEvents } from '../store/EventList/actions';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+  const dispatch = useDispatch();
+  
+  React.useEffect(() => {
+    dispatch<any>(LoadEvents())
+  }, [])
+  
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
