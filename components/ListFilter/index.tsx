@@ -1,23 +1,33 @@
 import React from 'react';
-import { ListFilterProps } from './types';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppState } from '../../store';
+import { HandleFilter } from '../../store/EventList/actions';
+import { FilterTypes } from '../../store/EventList/types';
 
 import * as S from './styles';
 
-const ListFilter = ({ filterValue, onChangeFilter }: ListFilterProps) => {
+const ListFilter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector((state: AppState) => state.list.filter);
+
+  const handleChangeFilter = (newFilter: FilterTypes) => {
+    dispatch<any>(HandleFilter(newFilter));
+  }
+
   return (
     <S.FilterContainer>
-      <S.FilterOption selected={filterValue === 'All'} onPress={() => onChangeFilter('All')}>
-        <S.FilterName selected={filterValue === 'All'}>
+      <S.FilterOption selected={filter === 'All'} onPress={() => handleChangeFilter('All')}>
+        <S.FilterName selected={filter === 'All'}>
           All
         </S.FilterName>
       </S.FilterOption>
-      <S.FilterOption selected={filterValue === 'College'} onPress={() => onChangeFilter('College')}>
-        <S.FilterName selected={filterValue === 'College'}>
+      <S.FilterOption selected={filter === 'College'} onPress={() => handleChangeFilter('College')}>
+        <S.FilterName selected={filter === 'College'}>
           College
         </S.FilterName>
       </S.FilterOption>
-      <S.FilterOption selected={filterValue === 'Company'} onPress={() => onChangeFilter('Company')}>
-        <S.FilterName selected={filterValue === 'Company'}>
+      <S.FilterOption selected={filter === 'Company'} onPress={() => handleChangeFilter('Company')}>
+        <S.FilterName selected={filter === 'Company'}>
           Company
         </S.FilterName>
       </S.FilterOption>

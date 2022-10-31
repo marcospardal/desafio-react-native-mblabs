@@ -11,6 +11,7 @@ export default interface Event {
   id: number;
   local?: string;
   street: string;
+  stNumber: number;
   neighborhood: string;
   city: string;
 }

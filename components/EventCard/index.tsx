@@ -12,17 +12,17 @@ const EventCard = ({ event }: EventCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <S.Card onLongPress={() => navigation.navigate('ModalEventInfo')}>
-      <S.EventImage source={{ uri: "https://images.unsplash.com/photo-1526045612212-70caf35c14df"}}/>
+    <S.Card onLongPress={() => navigation.navigate('ModalEventInfo', { event: event.item })}>
+      <S.EventImage source={{ uri: event.item.img}}/>
       <S.CardInfo>
         <S.Row>
-          <S.CardTitle>Event Name</S.CardTitle>
-          <S.Icon name='graduation-cap'/>
+          <S.CardTitle>{event.item.name}</S.CardTitle>
+          <S.Icon name={event.item.organizerType === 'College' ? 'graduation-cap' : 'dollar-sign'}/>
         </S.Row>
-        <S.EventOrganizer>Event Organizer</S.EventOrganizer>
-        <S.EventInfo>20/10/2022 18:40</S.EventInfo>
-        <S.EventTicketPrice>$ 30</S.EventTicketPrice>
-        <S.EventInfo>Street name - number, neighborhod, city</S.EventInfo>
+        <S.EventOrganizer>{event.item.organizer}</S.EventOrganizer>
+        <S.EventInfo>{event.item.date} {event.item.time}</S.EventInfo>
+        <S.EventTicketPrice>$ {event.item.ticketValue}</S.EventTicketPrice>
+        <S.EventInfo>{event.item.street} - {event.item.stNumber}, {event.item.neighborhood}, {event.item.city}</S.EventInfo>
       </S.CardInfo>
     </S.Card>
   )

@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { EventListProps } from './types';
 import ListFilter from '../ListFilter';
 import EventCard from '../EventCard';
+import Event from '../../types/event';
+import { useSelector } from 'react-redux';
 
 import * as S from './styles';
-
-type FilterTypes = 'All' | 'College' | 'Company';
+import { AppState } from '../../store';
 
 /**
  * 
  * @author Marcos Pardal
  */
-const EventList = ({  }: EventListProps) => {
-  const [filterValue, setFilterValue] = useState<FilterTypes>('All');
+const EventList = ({ type }: EventListProps) => {
+  const list = useSelector((state: AppState) => type === 'All' ? state.list.data : state.list.myTickets);
 
   return (
     <S.EventList>
-      <ListFilter filterValue={filterValue} onChangeFilter={setFilterValue} />
+      {type === 'All' && <ListFilter />}
       <S.List 
-        data={['1', '2', '3', '4', '5', '6', '7', '8']}
-        renderItem={(item: string) => <EventCard/>}
-        keyExtractor={(item: string) => item}
+        data={list}
+        renderItem={(event: Event) => <EventCard event={event}/>}
+        keyExtractor={(item: Event) => item.id}
       />
     </S.EventList>
   )

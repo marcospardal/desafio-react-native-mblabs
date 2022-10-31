@@ -1,5 +1,6 @@
-import React from 'react';
-import { SearchBarProps } from './types';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { HandleSearch } from '../../store/EventList/actions';
 
 import * as S from './styles';
 
@@ -8,14 +9,22 @@ import * as S from './styles';
  * @author Marcos Pardal
  * @param onSearch function to handle search
  */
-const SearchBar = ({ onSearch }: SearchBarProps) => {
+const SearchBar = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
+  const dispatch = useDispatch();
+
+  const handleSearch = () => {
+    dispatch<any>(HandleSearch(searchValue));
+  }
+  
   return (
     <>
-      <S.Input placeholder="Search"/>
+      <S.Input placeholder="Search" value={searchValue} onChangeText={setSearchValue}/>
       <S.SearchIcon
         name="search"
         size={15}
         color={'black'}
+        onPress={handleSearch}
       />
     </>
   )

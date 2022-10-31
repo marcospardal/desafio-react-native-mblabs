@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { IconInfo, NumberControl } from '../../components';
+import { RootStackScreenProps } from '../../types';
 
 import * as S from './styles';
 
-const EventInfo = () => {
+const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
+  const { event } = route.params;
   const [ticketsNumber, setTicketsNumber] = useState<number>(0);
 
   const handleTicketsIncrease = () => setTicketsNumber(prev => prev + 1);
@@ -12,25 +14,26 @@ const EventInfo = () => {
 
   return (
     <S.Container>
-      <S.EventImage source={{ uri: "https://images.unsplash.com/photo-1526045612212-70caf35c14df"}}/>
+      <S.EventImage source={{ uri: event.img}}/>
       <S.Content>
-        <S.Title>Event Names</S.Title>
-        <S.Description>
-          Lorem ipsum dolor sit amet. Non quia inventore cum consequuntur mollitia et autem dolores. 
-          Nam dolorem vero vel suscipit dolorem aut amet quas et sint dignissimos id iure sint aut 
-          explicabo voluptas qui nostrum fugit. Ea harum veritatis ut architecto reprehenderit et 
-          fuga molestiae ut rerum autem.
-        </S.Description>
-        <IconInfo icon={<S.Icon name='dollar-sign' />} info={'30'}/>
+        <S.Title>{event.name}</S.Title>
+        <S.Description>{event.description}</S.Description>
+        <IconInfo icon={<S.Icon name='dollar-sign' />} info={event.ticketValue.toString()}/>
         <S.Row>
-          <IconInfo icon={<S.Icon name='graduation-cap' />} info={'Organizer'}/>
-          <IconInfo icon={<S.Icon name='at'/>} info={'socialmedia'} noMargin={true}/>
+          <IconInfo 
+            icon={<S.Icon name={event.organizerType === 'College' ? 'graduation-cap' : 'dollar-sign'} />} 
+            info={event.organizer}
+          />
+          <IconInfo icon={<S.Icon name='at'/>} info={event.socialMedia ?? ''} noMargin={true}/>
         </S.Row>
         <S.Row>
-          <IconInfo icon={<S.Icon name='calendar' />} info={'20/10/2022'} />
-          <IconInfo icon={<S.Icon name='clock' />} info={'18:40'} />
+          <IconInfo icon={<S.Icon name='calendar' />} info={event.date} />
+          <IconInfo icon={<S.Icon name='clock' />} info={event.time} />
         </S.Row>
-        <IconInfo icon={<S.Icon name='map-marker-alt' />} info={'Location Name. Street name - number, neighborhood, city.'}/>
+        <IconInfo 
+          icon={<S.Icon name='map-marker-alt' />} 
+          info={`${event.local}. ${event.street} - ${event.stNumber}, ${event.neighborhood}, ${event.city}.`}
+        />
       </S.Content>
       <S.BuyingOptions>
         <NumberControl value={ticketsNumber} handleDecrease={handleTicketsDecrease} handleIncrease={handleTicketsIncrease} />

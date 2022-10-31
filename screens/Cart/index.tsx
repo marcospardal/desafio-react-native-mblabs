@@ -13,7 +13,7 @@ const Cart = () => {
     />
     <S.Finish>
       <S.FinishLabel>
-        Buy
+        Finish $60
       </S.FinishLabel>
     </S.Finish>
   </S.Container>

@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Event from './types/event';
 
 declare global {
   namespace ReactNavigation {
@@ -16,7 +17,9 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Cart: undefined;
-  ModalEventInfo: undefined;
+  ModalEventInfo: {
+    event: Event
+  };
   MyTickets: undefined;
 };
 

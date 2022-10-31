@@ -7,7 +7,7 @@ import * as S from './styles';
 const MyTickets = () => {
   return (
     <S.Container>
-      <EventList />
+      <EventList type='MyTickets'/>
     </S.Container>
   )
 }

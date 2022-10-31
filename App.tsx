@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+
+import store from './store';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -15,12 +18,14 @@ export default function App() {
     return null;
   } else {
     return (
-      <ThemeProvider theme={colorScheme === 'dark' ? Colors.dark : Colors.light}>
-        <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
-        </SafeAreaProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={colorScheme === 'dark' ? Colors.dark : Colors.light}>
+          <SafeAreaProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </Provider>
     );
   }
 }
