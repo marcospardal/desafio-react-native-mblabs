@@ -22,7 +22,7 @@ export const Finish = styled.TouchableOpacity.attrs({
   align-self: center;
   justify-content: center;
   height: 50px;
-  background-color: ${({ theme }: any) => theme.success};
+  background-color: ${({ theme, disabled }: any) => !disabled ? theme.success : theme.disabled};
   border-radius: 4px;
 `
 

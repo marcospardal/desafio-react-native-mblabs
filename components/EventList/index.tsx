@@ -20,7 +20,7 @@ const EventList = ({ type }: EventListProps) => {
       {type === 'All' && <ListFilter />}
       <S.List 
         data={list}
-        renderItem={(event: Event) => <EventCard event={event}/>}
+        renderItem={(event: Event) => <EventCard onlyInfo={type === 'MyTickets'} event={event}/>}
         keyExtractor={(item: Event) => item.id}
       />
     </S.EventList>

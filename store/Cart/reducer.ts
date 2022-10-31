@@ -26,14 +26,26 @@ const CartReducer: Reducer<CartState> = (state = INITIAL_STATE, action: CartDisp
     }
       break;
     case 'HANDLE_ITEM_NUMBER': {
+      let total = 0;
       const editIndex = newState.items.findIndex(item => item.event.id === action.data.item.event.id);
       newState.items[editIndex] = action.data.item;
+      newState.items.forEach((item) => {
+        total += item.number * item.event.ticketValue;
+      });
+      newState.total = total;
     }
       break;
     case 'HANDLE_FINISH': 
       newState.items = [];
       break;
-
+    case 'REMOVE_ITEM': 
+      {
+        let total = 0;
+        newState.items = newState.items.filter(item => item.event.id !== action.data.item.event.id);
+        newState.items.forEach((item) => total += item.number * item.event.ticketValue)
+        newState.total = total;
+      }
+      break;
     default:
       newState = {...state};
       break;

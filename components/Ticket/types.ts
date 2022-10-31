@@ -1,6 +1,5 @@
-import Event from "../../types/event";
+import Ticket from "../../types/ticket";
 
 export interface TicketProps {
-  event?: Event;
-  number: number;
+  item: Ticket;
 }

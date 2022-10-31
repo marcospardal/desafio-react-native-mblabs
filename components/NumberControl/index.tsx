@@ -14,8 +14,8 @@ const NumberControl = ({ value, handleIncrease, handleDecrease, cart = false }: 
 
   return (
     <S.Container>
-      <S.Button onPress={handleDecrease} disabled={value === 0}>
-        <S.Icon name={cart && value === 0 ? 'remove' : 'minus'} size={18} disabled={value === 0}/>
+      <S.Button onPress={handleDecrease} disabled={value === 0 && !cart}>
+        <S.Icon name={cart && value === 1 ? 'remove' : 'minus'} size={18} disabled={value === 0}/>
       </S.Button>
       <S.Number>{value}</S.Number>
       <S.Button onPress={handleIncrease}>

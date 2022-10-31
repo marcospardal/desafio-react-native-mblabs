@@ -7,15 +7,15 @@ import * as S from './styles';
 const CartIcon = () => {
   const cart = useSelector((state: AppState) => state.cart);
 
+  console.log(cart)
+
   return (
     <>
       <S.CartIcon />
-      {
-        cart.items.length && (
-          <S.ContainerNumber>
-            <S.Number>{cart.items.length}</S.Number>
-          </S.ContainerNumber>
-        )
+      {cart.items.length !== 0 && 
+        <S.ContainerNumber>
+          <S.Number>{cart.items.length}</S.Number>
+        </S.ContainerNumber>
       }
     </>
   )

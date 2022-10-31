@@ -19,6 +19,7 @@ export type RootStackParamList = {
   Cart: undefined;
   ModalEventInfo: {
     event: Event
+    onlyInfo: boolean
   };
   MyTickets: undefined;
 };

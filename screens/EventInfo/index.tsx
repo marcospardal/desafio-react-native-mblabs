@@ -9,7 +9,7 @@ import { AddItem } from '../../store/Cart/actions';
 
 const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
   const dispatch = useDispatch();
-  const { event } = route.params;
+  const { event, onlyInfo } = route.params;
   const navigation = useNavigation();
   const [ticketsNumber, setTicketsNumber] = useState<number>(0);
 
@@ -18,7 +18,7 @@ const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
   const handleTicketsDecrease = () => setTicketsNumber(prev => prev - 1);
 
   const handleAddToCart = () => {
-    const ticket = { event, number: ticketsNumber };
+    const ticket = { event: event, number: ticketsNumber };
     dispatch<any>(AddItem(ticket));
     navigation.navigate('Root');
   }
@@ -46,12 +46,14 @@ const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
           info={`${event.local}. ${event.street} - ${event.stNumber}, ${event.neighborhood}, ${event.city}.`}
         />
       </S.Content>
-      <S.BuyingOptions>
-        <NumberControl value={ticketsNumber} handleDecrease={handleTicketsDecrease} handleIncrease={handleTicketsIncrease} />
-        <S.AddCart disabled={ticketsNumber === 0} onPress={handleAddToCart}>
-          <S.CartLabel>Add to cart</S.CartLabel>
-        </S.AddCart>
-      </S.BuyingOptions>
+      {!onlyInfo && 
+        <S.BuyingOptions>
+          <NumberControl value={ticketsNumber} handleDecrease={handleTicketsDecrease} handleIncrease={handleTicketsIncrease} />
+          <S.AddCart disabled={ticketsNumber === 0} onPress={handleAddToCart}>
+            <S.CartLabel>Add to cart</S.CartLabel>
+          </S.AddCart>
+        </S.BuyingOptions>
+      }
     </S.Container>
   )
 }

@@ -8,11 +8,15 @@ import * as S from './styles';
  * 
  * @author Marcos Pardal
  */
-const EventCard = ({ event }: EventCardProps) => {
+const EventCard = ({ event, onlyInfo = false }: EventCardProps) => {
   const navigation = useNavigation();
 
+  const handleClick = () => {
+    navigation.navigate('ModalEventInfo', { event: event.item, onlyInfo });
+  }
+
   return (
-    <S.Card onLongPress={() => navigation.navigate('ModalEventInfo', { event: event.item })}>
+    <S.Card onLongPress={handleClick}>
       <S.EventImage source={{ uri: event.item.img}}/>
       <S.CardInfo>
         <S.Row>
