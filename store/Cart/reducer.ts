@@ -37,6 +37,7 @@ const CartReducer: Reducer<CartState> = (state = INITIAL_STATE, action: CartDisp
       break;
     case 'HANDLE_FINISH': 
       newState.items = [];
+      newState.total = 0;
       break;
     case 'REMOVE_ITEM': 
       {
