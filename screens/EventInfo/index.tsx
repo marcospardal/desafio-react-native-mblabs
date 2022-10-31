@@ -48,7 +48,7 @@ const EventInfo = ({ route }: RootStackScreenProps<'ModalEventInfo'>) => {
       </S.Content>
       <S.BuyingOptions>
         <NumberControl value={ticketsNumber} handleDecrease={handleTicketsDecrease} handleIncrease={handleTicketsIncrease} />
-        <S.AddCart onPress={handleAddToCart}>
+        <S.AddCart disabled={ticketsNumber === 0} onPress={handleAddToCart}>
           <S.CartLabel>Add to cart</S.CartLabel>
         </S.AddCart>
       </S.BuyingOptions>

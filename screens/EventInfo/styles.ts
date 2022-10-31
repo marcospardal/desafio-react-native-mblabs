@@ -56,7 +56,7 @@ export const AddCart = styled.TouchableOpacity.attrs({
 })`
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }: any) => theme.tint};
+  background-color: ${({ theme, disabled }: any) => !disabled ? theme.tint : theme.disabled};
   border-radius: 4px;
   margin: 0 10px;
   width: 100%;
