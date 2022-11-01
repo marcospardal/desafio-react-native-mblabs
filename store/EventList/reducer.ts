@@ -28,7 +28,8 @@ const EventsReducer: Reducer<ListEventState> = (state = INITIAL_STATE, action: E
       newState = {...state, filter: action.data.filterType};
       break;
     case 'ADD_EVENT':
-      newState = {...state, myTickets: [...state.myTickets, action.data.ticket]}
+      if (!newState.myTickets.find(ticket => ticket.id === action.data.ticket.id))
+        newState = {...state, myTickets: [...state.myTickets, action.data.ticket]}
       break;
     case 'LOAD_EVENTS': 
       const events = LoadEvents(state.search, state.filter);
